@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+	<title>NBA Trade Machine</title>
+
+	<!-- Bootstrap CSS -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- This just how we connect to the local CSS file in Django -->
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/trade.css' %}">
+</head>
+<body>
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">NBATM</a> <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+				</li>
+			</ul>
+			<form class="form-inline my-2 my-lg-0">
+				<input aria-label="Search" class="form-control mr-sm-2" placeholder="Search" type="search"> <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			</form>
+		</div>
+	</nav>
+
+	<!-- Main -->
+	<div class="container">
+		<div class="row">
+			<!-- Team 1 -->
+			<div id="team1" class="col">
+				<h3>Team 1</h3>
+				<!-- This is the team dropdown -->
+				<div class="dropdown">
+				  <button id="dropdownMenuButton1" class="btn btn-secondary btn-lg dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Choose team</button>
+				  <!-- "team11" refers to team 1, selected in the "Team 1" dropdown. 
+					   Conversely, "team21" (below) refers to team 1, selected in the "Team 2" dropdown
+
+					   Currently only works for "Team1"
+				  -->
+				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				    <button id="team11" class="dropdown-item" type="button">Boston Celtics</button>
+				    <button id="team12" class="dropdown-item" type="button">Brooklyn Nets</button>
+				    <button class="dropdown-item" type="button">Team3</button>
+				    <button class="dropdown-item" type="button">Team4</button>
+				    <button class="dropdown-item" type="button">Team5</button>
+				    <button class="dropdown-item" type="button">Team6</button>
+				    <button class="dropdown-item" type="button">Team7</button>
+				    <button class="dropdown-item" type="button">Team8</button>
+				    <button class="dropdown-item" type="button">Team9</button>
+				    <button class="dropdown-item" type="button">Team10</button>
+				    <button class="dropdown-item" type="button">Team11</button>
+				    <button class="dropdown-item" type="button">Team12</button>
+				    <button class="dropdown-item" type="button">Team13</button>
+				    <button class="dropdown-item" type="button">Team14</button>
+				    <button class="dropdown-item" type="button">Team15</button>
+				    <button class="dropdown-item" type="button">Team16</button>
+				    <button class="dropdown-item" type="button">Team17</button>
+				  </div>
+				</div>
+
+				<!-- List of players, after selecting a team the player names are added dynamically (see static/nbatrademachine/js/trade.js) -->
+				<h4>Player list</h4>
+				<div id="teamplayers1" class="list-group"></div>
+
+				<!-- Trade options, after selecting a player from the other team, the player is added here dynamically -->
+				<div id="team1tradeoptions" class="d-none tradeoption">
+					<h4>Trade options</h4>
+					<div class="list-group"></div>
+				</div>
+			</div>
+
+			<!-- Basically same stuff for team 2 -->
+			<div id="team2" class="col">
+				<h3>Team 2</h3>
+				<div class="dropdown">
+				  <button id="dropdownMenuButton2" class="btn btn-secondary btn-lg dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Choose team</button>
+				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				    <button id="team21" class="dropdown-item" type="button">Boston Celtics</button>
+				    <button id="team22" class="dropdown-item" type="button">Brooklyn Nets</button>
+				    <button class="dropdown-item" type="button">Team3</button>
+				    <button class="dropdown-item" type="button">Team4</button>
+				    <button class="dropdown-item" type="button">Team5</button>
+				    <button class="dropdown-item" type="button">Team6</button>
+				    <button class="dropdown-item" type="button">Team7</button>
+				    <button class="dropdown-item" type="button">Team8</button>
+				    <button class="dropdown-item" type="button">Team9</button>
+				    <button class="dropdown-item" type="button">Team10</button>
+				    <button class="dropdown-item" type="button">Team11</button>
+				    <button class="dropdown-item" type="button">Team12</button>
+				    <button class="dropdown-item" type="button">Team13</button>
+				    <button class="dropdown-item" type="button">Team14</button>
+				    <button class="dropdown-item" type="button">Team15</button>
+				    <button class="dropdown-item" type="button">Team16</button>
+				    <button class="dropdown-item" type="button">Team17</button>
+				  </div>
+				</div>
+
+				<h4>Player list</h4>
+				<ul id="teamplayers2" class="list-group"></ul>
+
+				<div id="team2tradeoptions" class="d-none tradeoption">
+					<h4>Trade options</h4>
+					<div class="list-group"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js">
+	</script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js">
+	</script> 
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js">
+	</script>
+
+	<!-- This is just how we connect the JavaScript to the HTML in Django-->
+	{% load staticfiles %}
+	<script src="{% static 'js/trade.js' %}"></script>
+
+</body>
+</html>
