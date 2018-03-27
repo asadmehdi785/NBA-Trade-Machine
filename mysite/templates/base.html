@@ -3,6 +3,14 @@
   <head>
     <meta charset="utf-8">
     <title>{% block title %}Simple is Better Than Complex{% endblock %}</title>
+	<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+	<!-- Bootstrap CSS -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- This just how we connect to the local CSS file in Django -->
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
   </head>
   <body>
     <header>
@@ -14,9 +22,12 @@
       {% endif %}
       <hr>
     </header>
+	<div class="container">
     <main>
+	
       {% block content %}
       {% endblock %}
     </main>
+	</div>
   </body>
 </html>

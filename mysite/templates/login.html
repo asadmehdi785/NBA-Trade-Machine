@@ -1,10 +1,25 @@
+<html>
 {% extends 'base.html' %}
+<head>
+<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+	<title>NBA Trade Machine</title>
 
+	<!-- Bootstrap CSS -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- This just how we connect to the local CSS file in Django -->
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">	
+</head>
+<body>
 {% block content %}
   <h2>Log in to My Site</h2>
   {% if form.errors %}
     <p style="color: red">Your username and password didn't match. Please try again.</p>
   {% endif %}
+  <div class="container1">
   <form method="post">
     {% csrf_token %}
     <input type="hidden" name="next" value="{{ next }}" />
@@ -18,9 +33,12 @@
         {% if field.help_text %}
           <p><small style="color: grey">{{ field.help_text }}</small></p>
         {% endif %}
-      </p>
+	  </p>
     {% endfor %}
-    <button type="submit">Log in</button>
+    <button type="submit">Log in</button><br>
     <a href="{% url 'signup' %}">New to My Site? Sign up</a>
   </form>
+  </div>
 {% endblock %}
+</body>
+</html>

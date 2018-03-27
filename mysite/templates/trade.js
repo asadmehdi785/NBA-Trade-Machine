@@ -42,10 +42,10 @@ $(document).ready(function() {
 	};
 	
 	// Arbitrary arrays of player names
-	var team1players = ['Player1', 'Player2', 'Player3', 'Player4', 'Player5',
-					    'Player6', 'Player7', 'Player8', 'Player9', 'Player10'];
-	var team2players = ['Best player', 'Worst player', 'Some random guy', 'Youssef', 'Sam',
-					    'Albert', 'Asad', 'Professor Sturman', 'TA John', 'President Jackson'];
+	var team1players = ['G. Hayward', 'Al Horford', 'Kyrie Irving', 'Jayson Tatum', 'M. Morris',
+					    'Greg Monroe', 'Jaylen Brown', 'Marcus Smart', 'Aron Baynes', 'G. Yabusele'];
+	var team2players = ['Allen Crabbe', 'T. Mozgov', 'D. Carroll', 'Jeremy Lin', 'D. Russell',
+					    'J. Okafor', 'Nik Stauskas', 'D. Cunningham', 'J. Allen', 'Quincy Acy'];
 
 	// This handles what happens when each dropdown is clicked			
 	$('#team11').click(function() {
