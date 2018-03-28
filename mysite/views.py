@@ -13,3 +13,4 @@ def index(request):
 
 def trade(request):
 	return render(request, 'templates/trade.html')
+

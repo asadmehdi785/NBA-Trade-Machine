@@ -7,8 +7,10 @@
 	<title>NBA Trade Machine</title>
 	<!-- Bootstrap CSS -->
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/materia/bootstrap.min.css">
 	
 	<!-- Local CSS file -->
+	{% load staticfiles %}
 	<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
 	
 </head>
@@ -21,9 +23,6 @@
 					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
 				</li>
 			</ul>
-			<form class="form-inline my-2 my-lg-0">
-				<input aria-label="Search" class="form-control mr-sm-2" placeholder="Search" type="search"> <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-			</form>
 		</div>
 	</nav>
 	<div class="jumbotron">
@@ -31,8 +30,52 @@
 		<p class="lead">Make your trades</p>
 		<hr class="my-4">
 		<p>Use an easily designed trade machine to quickly and intelligently test out different trades between teams in the NBA.</p>
-		<p class="lead"><a class="btn btn-primary btn-lg" href="#" role="button">Get Started</a></p>
+		{% if user.is_authenticated %}
+		<p class="lead"><a class="btn btn-primary btn-lg" href="{% url 'trade' %}" role="button">Get Started</a></p>
+		{% else %}
+		<p class="lead"><a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Get Started</a></p>
+		{% endif %}
 	</div>
+	<div class="container">
+		<footer class="pt-4 my-md-5 pt-md-5 border-top">
+		    <div class="row">
+		      <div class="col">
+		        <img class="mb-2" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
+		        <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
+		      </div>
+		      <!-- <div class="col-6 col-md">
+		        <h5>Features</h5>
+		        <ul class="list-unstyled text-small">
+		          <li><a class="text-muted" href="#">Cool stuff</a></li>
+		          <li><a class="text-muted" href="#">Random feature</a></li>
+		          <li><a class="text-muted" href="#">Team feature</a></li>
+		          <li><a class="text-muted" href="#">Stuff for developers</a></li>
+		          <li><a class="text-muted" href="#">Another one</a></li>
+		          <li><a class="text-muted" href="#">Last time</a></li>
+		        </ul>
+		      </div>
+		      <div class="col-6 col-md">
+		        <h5>Resources</h5>
+		        <ul class="list-unstyled text-small">
+		          <li><a class="text-muted" href="#">Resource</a></li>
+		          <li><a class="text-muted" href="#">Resource name</a></li>
+		          <li><a class="text-muted" href="#">Another resource</a></li>
+		          <li><a class="text-muted" href="#">Final resource</a></li>
+		        </ul>
+		      </div> -->
+		      <div class="col">
+		        <h5>About</h5>
+		        <ul class="list-unstyled text-small">
+		          <li><a class="text-muted" href="#">Team</a></li>
+		          <li><a class="text-muted" href="#">Locations</a></li>
+		          <li><a class="text-muted" href="#">Privacy</a></li>
+		          <li><a class="text-muted" href="#">Terms</a></li>
+		        </ul>
+		      </div>
+		    </div>
+	    </footer>
+	</div>
+	
 
 	<!-- JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->

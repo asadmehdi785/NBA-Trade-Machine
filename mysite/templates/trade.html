@@ -8,24 +8,39 @@
 
 	<!-- Bootstrap CSS -->
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/materia/bootstrap.min.css">
+
 
 	<!-- This just how we connect to the local CSS file in Django -->
 	{% load staticfiles %}
+
 	<link rel="stylesheet" type="text/css" href="{% static 'css/trade.css' %}">
+
 </head>
 <body>
+
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="#">NBATM</a> <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active">
-					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
 				</li>
+				{% if user.is_authenticated %}
+		        <li class="nav-item">
+		          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+		        </li>
+		        {% else %}
+		        <li class="nav-item">
+		          <a class="nav-link" href="{% url 'login' %}">Login</a>
+		        </li> 
+		        <li>
+		          <a class="nav-link" href="{% url 'signup' %}">Signup</a>
+		        </li>
+		        {% endif %}
+		      </ul>
 			</ul>
-			<form class="form-inline my-2 my-lg-0">
-				<input aria-label="Search" class="form-control mr-sm-2" placeholder="Search" type="search"> <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-			</form>
 		</div>
 	</nav>
 
@@ -44,23 +59,21 @@
 					   Currently only works for "Team1"
 				  -->
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				    <button id="team11" class="dropdown-item" type="button">Boston Celtics</button>
-				    <button id="team12" class="dropdown-item" type="button">Brooklyn Nets</button>
-				    <button class="dropdown-item" type="button">Team3</button>
-				    <button class="dropdown-item" type="button">Team4</button>
-				    <button class="dropdown-item" type="button">Team5</button>
-				    <button class="dropdown-item" type="button">Team6</button>
-				    <button class="dropdown-item" type="button">Team7</button>
-				    <button class="dropdown-item" type="button">Team8</button>
-				    <button class="dropdown-item" type="button">Team9</button>
-				    <button class="dropdown-item" type="button">Team10</button>
-				    <button class="dropdown-item" type="button">Team11</button>
-				    <button class="dropdown-item" type="button">Team12</button>
-				    <button class="dropdown-item" type="button">Team13</button>
-				    <button class="dropdown-item" type="button">Team14</button>
-				    <button class="dropdown-item" type="button">Team15</button>
-				    <button class="dropdown-item" type="button">Team16</button>
-				    <button class="dropdown-item" type="button">Team17</button>
+				    <button id="team11" class="dropdown-item" type="button">Atlanta Hawks</button>
+				    <button id="team12" class="dropdown-item" type="button">Boston Celtics</button>
+				    <button class="dropdown-item" type="button">Brooklyn Nets</button>
+				    <button class="dropdown-item" type="button">Charlotte Hornets</button>
+				    <button class="dropdown-item" type="button">Chicago Bulls</button>
+				    <button class="dropdown-item" type="button">Cleveland Cavaliers</button>
+				    <button class="dropdown-item" type="button">Detroit Pistons</button>
+				    <button class="dropdown-item" type="button">Indiana Pacers</button>
+				    <button class="dropdown-item" type="button">Miami Heat</button>
+				    <button class="dropdown-item" type="button">Milwaukee Bucks</button>
+				    <button class="dropdown-item" type="button">New York Knicks	</button>
+				    <button class="dropdown-item" type="button">Orlando Magic</button>
+				    <button class="dropdown-item" type="button">Philadelphia 76ers</button>
+				    <button class="dropdown-item" type="button">Toronto Raptors</button>
+				    <button class="dropdown-item" type="button">Washington Wizards</button>
 				  </div>
 				</div>
 
@@ -81,23 +94,21 @@
 				<div class="dropdown">
 				  <button id="dropdownMenuButton2" class="btn btn-secondary btn-lg dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Choose team</button>
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				    <button id="team21" class="dropdown-item" type="button">Boston Celtics</button>
-				    <button id="team22" class="dropdown-item" type="button">Brooklyn Nets</button>
-				    <button class="dropdown-item" type="button">Team3</button>
-				    <button class="dropdown-item" type="button">Team4</button>
-				    <button class="dropdown-item" type="button">Team5</button>
-				    <button class="dropdown-item" type="button">Team6</button>
-				    <button class="dropdown-item" type="button">Team7</button>
-				    <button class="dropdown-item" type="button">Team8</button>
-				    <button class="dropdown-item" type="button">Team9</button>
-				    <button class="dropdown-item" type="button">Team10</button>
-				    <button class="dropdown-item" type="button">Team11</button>
-				    <button class="dropdown-item" type="button">Team12</button>
-				    <button class="dropdown-item" type="button">Team13</button>
-				    <button class="dropdown-item" type="button">Team14</button>
-				    <button class="dropdown-item" type="button">Team15</button>
-				    <button class="dropdown-item" type="button">Team16</button>
-				    <button class="dropdown-item" type="button">Team17</button>
+				    <button id="team21" class="dropdown-item" type="button">Atlanta Hawks</button>
+				    <button id="team22" class="dropdown-item" type="button">Boston Celtics</button>
+				    <button class="dropdown-item" type="button">Brooklyn Nets</button>
+				    <button class="dropdown-item" type="button">Charlotte Hornets</button>
+				    <button class="dropdown-item" type="button">Chicago Bulls</button>
+				    <button class="dropdown-item" type="button">Cleveland Cavaliers</button>
+				    <button class="dropdown-item" type="button">Detroit Pistons</button>
+				    <button class="dropdown-item" type="button">Indiana Pacers</button>
+				    <button class="dropdown-item" type="button">Miami Heat</button>
+				    <button class="dropdown-item" type="button">Milwaukee Bucks</button>
+				    <button class="dropdown-item" type="button">New York Knicks	</button>
+				    <button class="dropdown-item" type="button">Orlando Magic</button>
+				    <button class="dropdown-item" type="button">Philadelphia 76ers</button>
+				    <button class="dropdown-item" type="button">Toronto Raptors</button>
+				    <button class="dropdown-item" type="button">Washington Wizards</button>
 				  </div>
 				</div>
 
@@ -109,7 +120,45 @@
 					<div class="list-group"></div>
 				</div>
 			</div>
+
+			<div id="addteam3" class="col d-block">
+				<button type="button" class="btn btn-secondary">Add team 3?</button>
+			</div>
+			<div id="team3" class="col d-none">
+				<h3>Team 3</h3>
+				<div class="dropdown">
+				  <button id="dropdownMenuButton3" class="btn btn-secondary btn-lg dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Choose team</button>
+				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				    <button id="team31" class="dropdown-item" type="button">Atlanta Hawks</button>
+				    <button id="team32" class="dropdown-item" type="button">Boston Celtics</button>
+				    <button id="team33" class="dropdown-item" type="button">Brooklyn Nets</button>
+				    <button class="dropdown-item" type="button">Charlotte Hornets</button>
+				    <button class="dropdown-item" type="button">Chicago Bulls</button>
+				    <button class="dropdown-item" type="button">Cleveland Cavaliers</button>
+				    <button class="dropdown-item" type="button">Detroit Pistons</button>
+				    <button class="dropdown-item" type="button">Indiana Pacers</button>
+				    <button class="dropdown-item" type="button">Miami Heat</button>
+				    <button class="dropdown-item" type="button">Milwaukee Bucks</button>
+				    <button class="dropdown-item" type="button">New York Knicks	</button>
+				    <button class="dropdown-item" type="button">Orlando Magic</button>
+				    <button class="dropdown-item" type="button">Philadelphia 76ers</button>
+				    <button class="dropdown-item" type="button">Toronto Raptors</button>
+				    <button class="dropdown-item" type="button">Washington Wizards</button>
+				  </div>
+				</div>
+
+				<h4>Player list</h4>
+				<ul id="teamplayers3" class="list-group"></ul>
+
+				<div id="team3tradeoptions" class="d-none tradeoption">
+					<h4>Trade options</h4>
+					<div class="list-group"></div>
+				</div>
+			</div>
 		</div>
+		
+		<a id="testtrade" class="btn btn-primary btn-lg btn-block d-none" href="{% url 'result' %}" type="button">Test Trade!</a>
+		<a id="testtradeNotSuccessful" class="btn btn-primary btn-lg btn-block d-none" href="{% url 'failure' %}" type="button">Test Trade!</a>
 	</div>
 
 

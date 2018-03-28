@@ -1,5 +1,5 @@
 /* Just adding some spacing here, there's probably a better way of doing this */
-#dropdownMenuButton1, #dropdownMenuButton2 {
+#dropdownMenuButton1, #dropdownMenuButton2, #dropdownMenuButton3 {
 	margin-bottom: 10px;
 }
 .tradeoption {
@@ -8,6 +8,13 @@
 #testtrade {
 	margin-top: 40px;
 }
+#addteam3 {
+  margin-top: 40px;
+}
+#team1, #team2, #team3 h3 {
+  margin-top: 25px;
+}
+
 
 /*
    For animation purposes (DOES NOT WORK YET)

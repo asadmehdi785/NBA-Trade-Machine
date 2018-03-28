@@ -1,23 +1,8 @@
 body {
 	align-content: center;
-	background-color: orange;
+
 }
 
-.container{
-	width: 500px;
-	height:400px;
-	text-align: center;
-	background-color: rgba(52, 73,94, 0.7);
-	border-radius: 4px;
-	margin: 0 auto;
-	
-}
-.container{
-	width: 500px;
-	height:400px;
-	text-align: center;
-	background-color: rgba(52, 73,94);
-	border-radius: 4px;
-	margin: 0 auto;
-	
+.container {
+	margin-top: 50px;
 }

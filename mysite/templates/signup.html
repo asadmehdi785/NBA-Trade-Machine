@@ -2,7 +2,32 @@
 
 {% block content %}
   <h2>Sign up</h2>
-  <div class="container1">
+  <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+    {% if field.id_for_label == "id_username" %}
+    <div class="form-group">
+      <label for="{{ field.id_for_label }}">Username</label>
+      <input type="text" name="username" class="form-control" autofocus required id="{{ field.id_for_label }}" placeholder="Enter username">
+    </div>
+    {% elif field.id_for_label == "id_password1" %}
+    <div class="form-group">
+      <label for="{{ field.id_for_label }}">Password</label>
+      <input type="password" name="password1" class="form-control" required id="{{ field.id_for_label }}" placeholder="Enter password">
+    </div>
+    {% elif field.id_for_label == "id_password2" %}
+    <div class="form-group">
+      <label for="{{ field.id_for_label }}">Password</label>
+      <input type="password" name="password2" class="form-control" required id="{{ field.id_for_label }}" placeholder="Re-enter password">
+    </div>
+    {% endif %}
+    {% for error in field.errors %}
+        <p style="color: red">{{ error }}</p>
+    {% endfor %}
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Sign up</button>
+  </form>
+<!--   <div class="container1">
   <form method="post">
     {% csrf_token %}
     {% for field in form %}
@@ -16,5 +41,5 @@
     {% endfor %}
     <button type="submit">Sign up</button>
   </form>
-  </div>
+  </div> -->
 {% endblock %}

@@ -1,13 +1,13 @@
-<html>
 {% extends 'base.html' %}
 <head>
-<!-- Required meta tags -->
+  <!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 	<title>NBA Trade Machine</title>
 
 	<!-- Bootstrap CSS -->
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/materia/bootstrap.min.css">
 
 	<!-- This just how we connect to the local CSS file in Django -->
 	{% load staticfiles %}
@@ -15,11 +15,31 @@
 </head>
 <body>
 {% block content %}
-  <h2>Log in to My Site</h2>
+  <h2>Log in to NBA Trade Machine</h2>
   {% if form.errors %}
     <p style="color: red">Your username and password didn't match. Please try again.</p>
   {% endif %}
-  <div class="container1">
+  <form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}" />
+
+    {% for field in form %}
+    {% if field.id_for_label == "id_username" %}
+    <div class="form-group">
+      <label for="{{ field.id_for_label }}">Username</label>
+      <input type="username" name="username" class="form-control" autofocus required id="{{ field.id_for_label }}" placeholder="Enter username">
+    </div>
+    {% elif field.id_for_label == "id_password" %}
+    <div class="form-group">
+      <label for="{{ field.id_for_label }}">Password</label>
+      <input type="password" name="password" class="form-control" required id="{{ field.id_for_label }}" placeholder="Enter password">
+    </div>
+    {% endif %}
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Login</button>
+    <a href="{% url 'signup' %}">Don't have an account? Sign up here</a>
+  </form>
+  <!-- <div class="container1">
   <form method="post">
     {% csrf_token %}
     <input type="hidden" name="next" value="{{ next }}" />
@@ -38,7 +58,7 @@
     <button type="submit">Log in</button><br>
     <a href="{% url 'signup' %}">New to My Site? Sign up</a>
   </form>
-  </div>
+  </div> -->
 {% endblock %}
 </body>
 </html>

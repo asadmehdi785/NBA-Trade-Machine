@@ -6,9 +6,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
 
-@login_required
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'index.html')
 
 
 def signup(request):
@@ -20,12 +19,16 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('home')
+            return redirect('trade')
     else:
         form = UserCreationForm()
     return render(request, 'signup.html', {'form': form})
-	
-	
 
 def trade(request):
 	return render(request, 'trade.html')
+
+def result(request):
+    return render(request, 'result.html')
+
+def failure(request):
+    return render(request, 'failure.html')

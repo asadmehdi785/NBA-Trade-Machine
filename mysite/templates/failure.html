@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+	<title>NBA Trade Machine</title>
+
+	<!-- Bootstrap CSS -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/materia/bootstrap.min.css">
+
+	<!-- This just how we connect to the local CSS file in Django -->
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/trade.css' %}">
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">NBATM</a> <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+				</li>
+				{% if user.is_authenticated %}
+		        <li class="nav-item">
+		          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+		        </li>
+		        {% else %}
+		        <li class="nav-item">
+		          <a class="nav-link" href="{% url 'login' %}">Login</a>
+		        </li> 
+		        <li>
+		          <a class="nav-link" href="{% url 'signup' %}">Signup</a>
+		        </li>
+		        {% endif %}
+		      </ul>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="jumbotron">
+		<h1 class="display-4">Trade Unsuccessful!</h1>
+		<p class="lead">The trade between the Atlanta Hawks and the Boston Celtics was not successful.</p>
+		<p>Try another trade!</p>
+	</div>
+</body>
+</html>

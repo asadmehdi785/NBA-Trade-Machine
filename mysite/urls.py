@@ -8,8 +8,10 @@ urlpatterns = [
 	
     url(r'^$', core_views.home, name='home'),
     url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
-    url(r'^logout/$', auth_views.logout, {'next_page': 'login'}, name='logout'),
+    url(r'^logout/$', auth_views.logout, {'next_page': 'home'}, name='logout'),
     url(r'^signup/$', core_views.signup, name='signup'),
 	url(r'^trade/$', core_views.trade, name='trade'),
+	url(r'^result/$', core_views.result, name='result'),
+	url(r'^failure/$', core_views.failure, name='failure'),
 	url(r'^admin/', admin.site.urls),
 ]
