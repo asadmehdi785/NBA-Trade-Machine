@@ -1,3 +1,64 @@
+.floatleft {
+    float:left;
+	
+}
+.floatright {
+    float:right;
+}
+
+
+li{
+  display: inline;
+
+  
+  
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+   background-color: #333;
+	
+}
+
+.floatleft, li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+	  display: inline;
+}
+
+.floatleft ul {
+    list-style-type: none;
+	padding: 14px 16px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.floatright, li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+	  display: inline;
+}
+
+.floatright ul {
+    list-style-type: none;
+	padding: 14px 16px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+	list-style: none;
+    padding: 1em 0;
+}
+
 /* Just adding some spacing here, there's probably a better way of doing this */
 #dropdownMenuButton1, #dropdownMenuButton2, #dropdownMenuButton3 {
 	margin-bottom: 10px;

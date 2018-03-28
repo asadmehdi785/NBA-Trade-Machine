@@ -5,7 +5,7 @@ from mysite.core import views as core_views
 
 #admin.autodiscover()
 urlpatterns = [
-	
+	#url(r'^trade/$',core_views.home,name=' home'),
     url(r'^$', core_views.home, name='home'),
     url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
     url(r'^logout/$', auth_views.logout, {'next_page': 'home'}, name='logout'),

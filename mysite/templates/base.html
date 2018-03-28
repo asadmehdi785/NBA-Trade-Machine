@@ -14,32 +14,60 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  
+  <nav>
+  <!--   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">NBATM</a> <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
+        <li class="navitem active">
           <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
         </li>
         {% if user.is_authenticated %}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+        <li class="menu">
+          <a class="menu" href="{% url 'logout' %}">Logout</a>
         </li>
         {% else %}
-        <li class="nav-item">
+        <li class="menu">
           <a class="nav-link" href="{% url 'login' %}">Login</a>
         </li> 
         <li>
           <a class="nav-link" href="{% url 'signup' %}">Signup</a>
         </li>
+		<li>
+          <a class ="nav-link "href="{% url 'trade' %}">Guest</a>
+        </li>
         {% endif %}
       </ul>
+</div>	  -->
 
-    </div>
+
+
+<ul>
+<div class="floatleft">
+  <li><a href="#">NBATM</a></li>
+  <li><a href="{% url 'home' %}">Home </a></li>
+ </div>
+  
+  <div class="floatright">
+		{% if user.is_authenticated %}
+        <li class="menu">
+          <a  href="{% url 'logout' %}">Logout</a>
+        </li>
+        {% else %}
+        <li class="menu">
+          <a  href="{% url 'login' %}">Login</a>
+        </li> 
+        <li>
+          <a  href="{% url 'signup' %}">Signup</a>
+        </li>
+        {% endif %}
+		</div>
+	
+</ul>
   </nav>
-
-
+ 
 	<div class="container">
     <main>
       {% block content %}
