@@ -7,6 +7,9 @@ li {
 	
 
 }
+.coll{
+	   background-color: #333;
+}
 
 li a {
     display: block;
@@ -22,6 +25,13 @@ ul {
     padding: 0;
     overflow: hidden;
 	padding: 14px 16px;
-    background-color: #333;
+
 }
 	
+.col ul li a{
+	color: grey;
+}
+
+.hi ul{
+	background-color:white;
+}

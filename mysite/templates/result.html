@@ -1,4 +1,3 @@
-{% extends 'base.html' %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,34 +12,33 @@
 
 	<!-- This just how we connect to the local CSS file in Django -->
 	{% load staticfiles %}
-	<link rel="stylesheet" type="text/css" href="{% static 'css/trade.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="#">NBATM</a> <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active">
-					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-				</li>
-				{% if user.is_authenticated %}
-		        <li class="nav-item">
-		          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-		        </li>
-		        {% else %}
-		        <li class="nav-item">
-		          <a class="nav-link" href="{% url 'login' %}">Login</a>
-		        </li> 
-		        <li>
-		          <a class="nav-link" href="{% url 'signup' %}">Signup</a>
-		        </li>
-		        {% endif %}
-		      </ul>
-			</ul>
-
+	<nav>
+	<ul>
+<div class="floatleft">
+  <li><a href="#">NBATM</a></li>
+  <li><a href="{% url 'home' %}">Home </a></li>
+ </div>
+  
+  <div class="floatright">
+		{% if user.is_authenticated %}
+        <li class="menu">
+          <a  href="{% url 'logout' %}">Logout</a>
+        </li>
+        {% else %}
+        <li class="menu">
+          <a  href="{% url 'login' %}">Login</a>
+        </li> 
+        <li>
+          <a  href="{% url 'signup' %}">Signup</a>
+        </li>
+        {% endif %}
 		</div>
-	</nav>
-
+	
+</ul>
+  </nav>
 	<div class="jumbotron">
 		<h1 class="display-4">Trade successful!</h1>
 		<p class="lead">The trade between the Atlanta Hawks and the Boston Celtics was successful.</p>
