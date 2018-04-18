@@ -17,6 +17,8 @@
 
 	<link rel="stylesheet" type="text/css" href="{% static 'css/trade.css' %}">
 
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
 </head>
 
 <body>
@@ -46,47 +48,34 @@
   </nav>
   
   
-	<!-- Main -->
 	<div class="container">
 		<div class="row">
-			<!-- Team 1 -->
-			<div id="team1" class="col">
+			<div id="team1" class="col" >
 				<h3>Team 1</h3>
-				<!-- This is the team dropdown -->
 				<div class="dropdown">
 				  <button id="dropdownMenuButton1" class="btn btn-secondary btn-lg dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Choose team</button>
-				  <!-- "team11" refers to team 1, selected in the "Team 1" dropdown. 
-					   Conversely, "team21" (below) refers to team 1, selected in the "Team 2" dropdown
-
-					   Currently only works for "Team1"
-				  -->
+				  <!-- Gets all the teams from the database and puts them in the dropdown -->
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				    <button id="team11" class="dropdown-item" type="button">Atlanta Hawks</button>
-				    <button id="team12" class="dropdown-item" type="button">Boston Celtics</button>
-				    <button class="dropdown-item" type="button">Brooklyn Nets</button>
-				    <button class="dropdown-item" type="button">Charlotte Hornets</button>
-				    <button class="dropdown-item" type="button">Chicago Bulls</button>
-				    <button class="dropdown-item" type="button">Cleveland Cavaliers</button>
-				    <button class="dropdown-item" type="button">Detroit Pistons</button>
-				    <button class="dropdown-item" type="button">Indiana Pacers</button>
-				    <button class="dropdown-item" type="button">Miami Heat</button>
-				    <button class="dropdown-item" type="button">Milwaukee Bucks</button>
-				    <button class="dropdown-item" type="button">New York Knicks	</button>
-				    <button class="dropdown-item" type="button">Orlando Magic</button>
-				    <button class="dropdown-item" type="button">Philadelphia 76ers</button>
-				    <button class="dropdown-item" type="button">Toronto Raptors</button>
-				    <button class="dropdown-item" type="button">Washington Wizards</button>
+				  	{% for team in teams %}
+				  	<button class="dropdown-item team1dropdown" type="button" value='{{ team.id }}'>{{ team.teamName }}</button>
+				  	{% endfor %}
 				  </div>
 				</div>
 
-				<!-- List of players, after selecting a team the player names are added dynamically (see static/nbatrademachine/js/trade.js) -->
+				<!-- Player list should come here -->
 				<h4>Player list</h4>
-				<div id="teamplayers1" class="list-group"></div>
+                            <!-- a list which will contain the selected players -->
 
+
+                <ul id="teamplayers1" class="list-group teamplayers" >
+
+                </ul>
 				<!-- Trade options, after selecting a player from the other team, the player is added here dynamically -->
 				<div id="team1tradeoptions" class="d-none tradeoption">
 					<h4>Trade options</h4>
-					<div class="list-group"></div>
+					<div class="list-group  tradeplayers">
+                                        <!-- a list which will contain all the  players -->
+                    </div>
 				</div>
 			</div>
 
@@ -96,86 +85,88 @@
 				<div class="dropdown">
 				  <button id="dropdownMenuButton2" class="btn btn-secondary btn-lg dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Choose team</button>
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				    <button id="team21" class="dropdown-item" type="button">Atlanta Hawks</button>
-				    <button id="team22" class="dropdown-item" type="button">Boston Celtics</button>
-				    <button class="dropdown-item" type="button">Brooklyn Nets</button>
-				    <button class="dropdown-item" type="button">Charlotte Hornets</button>
-				    <button class="dropdown-item" type="button">Chicago Bulls</button>
-				    <button class="dropdown-item" type="button">Cleveland Cavaliers</button>
-				    <button class="dropdown-item" type="button">Detroit Pistons</button>
-				    <button class="dropdown-item" type="button">Indiana Pacers</button>
-				    <button class="dropdown-item" type="button">Miami Heat</button>
-				    <button class="dropdown-item" type="button">Milwaukee Bucks</button>
-				    <button class="dropdown-item" type="button">New York Knicks	</button>
-				    <button class="dropdown-item" type="button">Orlando Magic</button>
-				    <button class="dropdown-item" type="button">Philadelphia 76ers</button>
-				    <button class="dropdown-item" type="button">Toronto Raptors</button>
-				    <button class="dropdown-item" type="button">Washington Wizards</button>
+				  	<!-- Same as above, I didn't do this for team 3 because I want to focus on teams 1 and 2 right now -->
+				  	{% for team in teams %}
+				    <button class="dropdown-item team2dropdown" type="button" value='{{ team.id }}'>{{ team.teamName }}</button>
+				    {% endfor %}
 				  </div>
 				</div>
 
 				<h4>Player list</h4>
-				<ul id="teamplayers2" class="list-group"></ul>
+				                <!-- a list which will contain the selected players -->
+
+                <ul id="teamplayers2" class="list-group teamplayers" >
+
+                </ul>
 
 				<div id="team2tradeoptions" class="d-none tradeoption">
 					<h4>Trade options</h4>
-					<div class="list-group"></div>
+					<div class="list-group tradeplayers" >
+                <!-- a list which will contain all the  players in a team -->
+
+
+                    </div>
 				</div>
 			</div>
 
-			<div id="addteam3" class="col d-block">
-				<button type="button" class="btn btn-secondary">Add team 3?</button>
-			</div>
 			<div id="team3" class="col d-none">
 				<h3>Team 3</h3>
 				<div class="dropdown">
 				  <button id="dropdownMenuButton3" class="btn btn-secondary btn-lg dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Choose team</button>
 				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				    <button id="team31" class="dropdown-item" type="button">Atlanta Hawks</button>
-				    <button id="team32" class="dropdown-item" type="button">Boston Celtics</button>
-				    <button id="team33" class="dropdown-item" type="button">Brooklyn Nets</button>
-				    <button class="dropdown-item" type="button">Charlotte Hornets</button>
-				    <button class="dropdown-item" type="button">Chicago Bulls</button>
-				    <button class="dropdown-item" type="button">Cleveland Cavaliers</button>
-				    <button class="dropdown-item" type="button">Detroit Pistons</button>
-				    <button class="dropdown-item" type="button">Indiana Pacers</button>
-				    <button class="dropdown-item" type="button">Miami Heat</button>
-				    <button class="dropdown-item" type="button">Milwaukee Bucks</button>
-				    <button class="dropdown-item" type="button">New York Knicks	</button>
-				    <button class="dropdown-item" type="button">Orlando Magic</button>
-				    <button class="dropdown-item" type="button">Philadelphia 76ers</button>
-				    <button class="dropdown-item" type="button">Toronto Raptors</button>
-				    <button class="dropdown-item" type="button">Washington Wizards</button>
+				  	<!-- Same as above, I didn't do this for team 3 because I want to focus on teams 1 and 2 right now -->
+				  	{% for team in teams %}
+				    <button class="dropdown-item team3dropdown" type="button" value='{{ team.id }}'>{{ team.teamName }}</button>
+				    {% endfor %}
+
 				  </div>
 				</div>
 
 				<h4>Player list</h4>
-				<ul id="teamplayers3" class="list-group"></ul>
+                <!-- a list which will contain the selected players -->
+				<ul id="teamplayers3" class="list-group teamplayers" >
+
+                </ul>
 
 				<div id="team3tradeoptions" class="d-none tradeoption">
 					<h4>Trade options</h4>
-					<div class="list-group"></div>
+
+					<div class="list-group tradeplayers" >
+
+
+                    </div>
 				</div>
 			</div>
+
+			<div id="addteam3" class="col d-block">
+				<button type="button" class="btn btn-secondary" id="addTeam3Btn">Add team 3?</button>
+			</div>
+
 		</div>
 		
-		<a id="testtrade" class="btn btn-primary btn-lg btn-block d-none" href="{% url 'result' %}" type="button">Test Trade!</a>
+		<button id="testtrade" class="btn btn-primary btn-lg btn-block d-none" type="button">Test Trade!</button>
 		<a id="testtradeNotSuccessful" class="btn btn-primary btn-lg btn-block d-none" href="{% url 'failure' %}" type="button">Test Trade!</a>
 	</div>
 
 
 	<!-- JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js">
-	</script> 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js">
+	</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js">
 	</script> 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js">
 	</script>
-
 	<!-- This is just how we connect the JavaScript to the HTML in Django-->
 	{% load staticfiles %}
 	<script src="{% static 'js/trade.js' %}"></script>
+	<script src="{% static 'js/my.ajax.js' %}"></script>
+
+<input type="hidden" name="currentteam1players" id="currentteam1players">
+<input type="hidden" name="currentteam2players" id="currentteam2players">
+<input type="hidden" name="currentteam3players" id="currentteam3players">
+
+
 
 </body>
 </html>

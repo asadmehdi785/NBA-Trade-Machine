@@ -18,7 +18,6 @@
 </head>
 <body>
 	<nav>
-	
 	<ul>
 <div class="floatleft">
   <li><a href="#">NBATM</a></li>
@@ -42,15 +41,14 @@
 	
 </ul>
   </nav>
-
-	{% load humanize %}
+  	{% load humanize %}
 	<div class="container">
-		<h1 class="display-4">Trade unsuccessful...</h1>
+		<h1 class="display-4">Trade successful!</h1>
 		{% if trade_history %}
         <h5>Trade ID: {{ trade_history|intcomma }} !</h5>
         {% endif %}
 
-        <p class="lead">The trade between the <strong>{{ team1 }}</strong> and the <strong>{{ team2 }}</strong> was not successful.</p>
+            <p class="lead">The trade between the <strong>{{ team1 }}</strong> and the <strong>{{ team2 }}</strong> was successful.</p>
 
 
 		<div class="row col-lg-12 col-md-12 col-sm-12">
@@ -71,10 +69,12 @@
 
         </div>
 
+
     <div class="row col-lg-12 col-md-12 col-sm-12">
 
+
            <div class="col-lg-6 col-md-6 col-sm-6 col-sm-offset-1">
-               <h3><a class="btn btn-sm btn-danger payroll">Payroll</a> </h3>
+               <h3><a class="btn  btn-sm btn-danger payroll">Payroll</a> </h3>
                         <li class="list-group-item">Before: <a class="badge"> <span class="glyphicon -dollar"></span> <h3>${{ team1payRoll_beforeTrade|intcomma }}</h3></a> </li>
                         <li class="list-group-item">After: <a class="badge"> <span class="glyphicon -dollar"></span> <h3>${{ team1payRoll_afterTrade|intcomma }}</h3></a></li>
            </div>
