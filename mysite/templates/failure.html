@@ -18,77 +18,115 @@
 </head>
 <body>
 	<nav>
-	
-	<ul>
-<div class="floatleft">
-  <li><a href="#">NBATM</a></li>
-  <li><a href="{% url 'home' %}">Home </a></li>
- </div>
+        <ul>
+            <div class="floatleft">
+                <li><a href="#">NBATM</a></li>
+                <li><a href="{% url 'home' %}">Home </a></li>
+            </div>
   
-  <div class="floatright">
-		{% if user.is_authenticated %}
-        <li class="menu">
-          <a  href="{% url 'logout' %}">Logout</a>
-        </li>
-        {% else %}
-        <li class="menu">
-          <a  href="{% url 'login' %}">Login</a>
-        </li> 
-        <li>
-          <a  href="{% url 'signup' %}">Signup</a>
-        </li>
-        {% endif %}
-		</div>
-	
-</ul>
+            <div class="floatright">
+    		    {% if user.is_authenticated %}
+                <li class="menu">
+                    <a  href="{% url 'logout' %}">Logout</a>
+                </li>
+                {% else %}
+                <li class="menu">
+                    <a  href="{% url 'login' %}">Login</a>
+                </li> 
+                <li>
+                    <a  href="{% url 'signup' %}">Signup</a>
+                </li>
+                {% endif %}
+		    </div>
+        </ul>
   </nav>
 
 	{% load humanize %}
 	<div class="container">
 		<h1 class="display-4">Trade unsuccessful...</h1>
 		{% if trade_history %}
-        <h5>Trade ID: {{ trade_history|intcomma }} !</h5>
+        <h5>Trade ID: {{ trade_history|intcomma }}</h5>
         {% endif %}
 
-        <p class="lead">The trade between the <strong>{{ team1 }}</strong> and the <strong>{{ team2 }}</strong> was not successful.</p>
+        <p class="lead">The trade between the <strong>{{ team1 }}</strong> and the <strong>{{ team2 }}</strong> {% if team3 %} and <strong>{{ team3 }}<strong> {% endif %}was <span id="failure">unsuccessful</span>.</p>
 
+        <div class="row col-lg-12 col-md-12 col-sm-12">
 
-		<div class="row col-lg-12 col-md-12 col-sm-12">
-
-           <div class="col-lg-6 col-md-6 col-sm-6 col-sm-offset-1">
-            <h3>{{ team1 }}</h3>
-                    {% for l in list1 %}
-                        <li class="list-group-item"> {{ l }}</li>
-                    {% endfor %}
+            <div class="col-lg-4 col-md-4 col-sm-4 ">
+                <h3>{{ team1 }}</h3>
+                {% for l in list1 %}
+                <li class="list-group-item"> {{ l }}</li>
+                {% endfor %}
             </div>
 
-            <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="col-lg-4 col-md-4 col-sm-4 ">
                 <h3>{{ team2 }}</h3>
-                    {% for l in list2 %}
-                        <li class="list-group-item"> {{ l }}</li>
-                    {% endfor %}
+                {% for l in list2 %}
+                <li class="list-group-item"> {{ l }}</li>
+                {% endfor %}
             </div>
 
+            {% if team3 %}
+            <div class="col-lg-4 col-md-4 col-sm-4 ">
+                <h3>{{ team3|intcomma }}</h3>
+                {% for l in list3 %}
+                    <li class="list-group-item"> {{ l }}</li>
+                {% endfor %}
+            </div>
+            {% endif%}
         </div>
 
-    <div class="row col-lg-12 col-md-12 col-sm-12">
+        <div class="row col-lg-12 col-md-12 col-sm-12" id="payrolls">
 
-           <div class="col-lg-6 col-md-6 col-sm-6 col-sm-offset-1">
-               <h3><a class="btn btn-sm btn-danger payroll">Payroll</a> </h3>
-                        <li class="list-group-item">Before: <a class="badge"> <span class="glyphicon -dollar"></span> <h3>${{ team1payRoll_beforeTrade|intcomma }}</h3></a> </li>
-                        <li class="list-group-item">After: <a class="badge"> <span class="glyphicon -dollar"></span> <h3>${{ team1payRoll_afterTrade|intcomma }}</h3></a></li>
+            <div class="col-lg-4 col-md-4 col-sm-4 ">
+                <h3><a class="btn btn-sm btn-danger payroll">Payroll</a></h3>
+                <li class="list-group-item">Before: <a class="badge"> <span class="glyphicon -dollar"></span> <h3>${{ team1payRoll_beforeTrade|intcomma }}</h3></a></li>
+                <li class="list-group-item">After: <a class="badge"> <span class="glyphicon -dollar"></span> <h3>${{ team1payRoll_afterTrade|intcomma }}</h3></a></li>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 ">
+                <h3><a class="btn btn-sm btn-danger payroll">Payroll</a></h3>
+                <li class="list-group-item">Before: <a class="badge"> <span class="glyphicon -dollar"></span> <h3>${{ team2payRoll_beforeTrade|intcomma }}</h3></a></li>
+                <li class="list-group-item">After: <a class="badge"> <span class="glyphicon -dollar"></span> <h3>${{ team2payRoll_afterTrade|intcomma }}</h3></a></li>
+                </div>
+            {% if team3 %}
+            <div class="col-lg-4 col-md-4 col-sm-4 ">
+                <h3><a class="btn btn-sm btn-danger payroll">Payroll</a> </h3>
+                <li class="list-group-item">Before: <a class="badge"> <span class="glyphicon -dollar"></span> <h3>${{ team3payRoll_beforeTrade|intcomma }}</h3></a></li>
+                <li class="list-group-item">After: <a class="badge"> <span class="glyphicon -dollar"></span> <h3>${{ team3payRoll_afterTrade|intcomma }}</h3></a></li>
            </div>
-           <div class="col-lg-6 col-md-6 col-sm-6 col-sm-offset-1">
-            <h3><a class="btn btn-sm btn-danger payroll">Payroll</a> </h3>
-                        <li class="list-group-item">Before: <a class="badge"> <span class="glyphicon -dollar"></span> <h3>${{ team2payRoll_beforeTrade|intcomma }}</h3></a> </li>
-                        <li class="list-group-item">After: <a class="badge"> <span class="glyphicon -dollar"></span> <h3>${{ team2payRoll_afterTrade|intcomma }}</h3></a></li>
-           </div>
-    </div>
+           {% endif%}
+         </div>
 
-        {% comment %}<p class="lead">The payroll of {{ team1 }} before the trade was <strong>${{ team1payRoll_beforeTrade|intcomma }}</strong>. The payroll of {{ team2 }} before the trade was <strong>${{ team2payRoll_beforeTrade|intcomma }}</strong>.</p>
-		<p class="lead">The payroll of {{ team1 }} after the trade is <strong>${{ team1payRoll_afterTrade|intcomma }}</strong>. The payroll of {{ team2 }} after the trade is <strong>${{ team2payRoll_afterTrade|intcomma }}</strong>.</p>{% endcomment %}
+
+
+        <!-- {% comment %}<p class="lead">The payroll of {{ team1 }} before the trade was <strong>${{ team1payRoll_beforeTrade|intcomma }}</strong>. The payroll of {{ team2 }} before the trade was <strong>${{ team2payRoll_beforeTrade|intcomma }}</strong>.</p>
+		<p class="lead">The payroll of {{ team1 }} after the trade is <strong>${{ team1payRoll_afterTrade|intcomma }}</strong>. The payroll of {{ team2 }} after the trade is <strong>${{ team2payRoll_afterTrade|intcomma }}</strong>.</p>{% endcomment %} -->
+
+
+
 		<br>
 		<a class="btn btn-sm" href="/trade/"> Try another trade!</a>
+        <div id="share-buttons">
+            <!-- Email -->
+            <a href="mailto:?Subject=My Trade&amp;Body=Check%20out%20my%20trade!%20 https://rotd-nba-tm.com/{{ trade_history|intcomma }}">
+                <img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" />
+            </a>
+         
+            <!-- Facebook -->
+            <a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank">
+                <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+            </a>
+            
+            <!-- Reddit -->
+            <a href="http://reddit.com/submit?url=https://rotd-nba-tm.com/{{ trade_history|intcomma }}&amp;title=NBA Trade Machine" target="_blank">
+                <img src="https://simplesharebuttons.com/images/somacro/reddit.png" alt="Reddit" />
+            </a>
+            
+            <!-- Twitter -->
+            <a href="https://twitter.com/share?url=https://rotd-nba-tm.com/{{ trade_history|intcomma }}&amp;hashtags=RevengeOfTheDreamers,NBATradeMachine" target="_blank">
+                <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
+            </a>
+        </div>
 	</div>
 </body>
 </html>

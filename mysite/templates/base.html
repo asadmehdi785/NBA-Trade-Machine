@@ -16,42 +16,14 @@
   <body>
   
   <nav>
-  <!--   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">NBATM</a> <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
-
-    <div class="" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="navitem active">
-          <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-        </li>
-        {% if user.is_authenticated %}
-        <li class="menu">
-          <a class="menu" href="{% url 'logout' %}">Logout</a>
-        </li>
-        {% else %}
-        <li class="menu">
-          <a class="nav-link" href="{% url 'login' %}">Login</a>
-        </li> 
-        <li>
-          <a class="nav-link" href="{% url 'signup' %}">Signup</a>
-        </li>
-		<li>
-          <a class ="nav-link "href="{% url 'trade' %}">Guest</a>
-        </li>
-        {% endif %}
-      </ul>
-</div>	  -->
-
-
-
-<ul>
-<div class="floatleft">
-  <li><a href="#">NBATM</a></li>
-  <li><a href="{% url 'home' %}">Home </a></li>
- </div>
+    <ul>
+      <div class="floatleft">
+        <li><a href="#">NBATM</a></li>
+        <li><a href="{% url 'home' %}">Home </a></li>
+      </div>
   
-  <div class="floatright">
-		{% if user.is_authenticated %}
+      <div class="floatright">
+		    {% if user.is_authenticated %}
         <li class="menu">
           <a  href="{% url 'logout' %}">Logout</a>
         </li>
@@ -63,9 +35,8 @@
           <a  href="{% url 'signup' %}">Signup</a>
         </li>
         {% endif %}
-		</div>
-	
-</ul>
+		  </div>
+    </ul>
   </nav>
  
 	<div class="container">
@@ -74,5 +45,6 @@
       {% endblock %}
     </main>
 	</div>
+  
   </body>
 </html>

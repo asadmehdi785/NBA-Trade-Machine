@@ -1,3 +1,29 @@
-.teamplayers{max-height: 450px;overflow-y: scroll;}
-.tradeplayers{max-height: 450px;overflow-y: scroll;}
-.payroll{background:lightgreen;}
+.teamplayers{
+	max-height: 450px;
+	overflow-y: scroll;
+}
+.tradeplayers{
+	max-height: 450px;
+	overflow-y: scroll;
+}
+.payroll{
+	background:lightgreen;
+}
+.teamplayers1>li.list-group-item.player{z-index: 1000;}
+#payrolls {
+	margin-top: 15px;
+}
+#failure {
+	color: red;
+	font-weight: 650;
+}
+#share-buttons {
+	margin-top: 13px;
+}
+#share-buttons img {
+	width: 35px;
+	padding: 5px;
+	border: 0;
+	box-shadow: 0;
+	display: inline;
+}
