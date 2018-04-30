@@ -16,14 +16,17 @@
   <body>
   
   <nav>
-    <ul>
-      <div class="floatleft">
-        <li><a href="#">NBATM</a></li>
-        <li><a href="{% url 'home' %}">Home </a></li>
-      </div>
+
+
+
+<ul>
+<div class="floatleft">
+  <li><a href="#">NBATM</a></li>
+  <li><a href="{% url 'home' %}">Home </a></li>
+ </div>
   
-      <div class="floatright">
-		    {% if user.is_authenticated %}
+  <div class="floatright">
+		{% if user.is_authenticated %}
         <li class="menu">
           <a  href="{% url 'logout' %}">Logout</a>
         </li>
@@ -35,8 +38,9 @@
           <a  href="{% url 'signup' %}">Signup</a>
         </li>
         {% endif %}
-		  </div>
-    </ul>
+		</div>
+	
+</ul>
   </nav>
  
 	<div class="container">
@@ -45,6 +49,5 @@
       {% endblock %}
     </main>
 	</div>
-  
   </body>
 </html>

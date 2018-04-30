@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+	<title>NBA Trade Machine</title>
+
+	<!-- Bootstrap CSS -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/materia/bootstrap.min.css">
+
+
+	<!-- This just how we connect to the local CSS file in Django -->
+	{% load staticfiles %}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+<nav>
+<ul>
+<div class="floatleft">
+  <li><a href="#">NBATM</a></li>
+  <li><a href="{% url 'home' %}">Home </a></li>
+ </div>
+  
+  <div class="floatright">
+		{% if user.is_authenticated %}
+        <li class="menu">
+          <a  href="{% url 'logout' %}">Logout</a>
+        </li>
+        {% else %}
+        <li class="menu">
+          <a  href="{% url 'login' %}">Login</a>
+        </li> 
+        <li>
+          <a  href="{% url 'signup' %}">Signup</a>
+        </li>
+        {% endif %}
+		</div>
+	
+</ul>
+  </nav>
+  
+    {% load humanize %}
+	<div class="container">
+			
+            <div>
+            <h1>Trade History</h1>
+            </div>
+                
+            <div>
+            <h3>Trade ID: {{ trade_history }}</h3>
+			</div>
+			
+            <div>
+            <h3>Result: {{ result }}</h3>
+            </div>
+            
+                
+            <div class="row col-lg-12 col-md-12 col-sm-12">
+
+                <div class="col-lg-4 col-md-4 col-sm-4 ">
+                 <h3>{{ team1 }}</h3>
+                         {% for l in list1 %}
+                             <li class="list-group-item"> {{ l }}</li>
+                         {% endfor %}
+                 </div>
+
+                 <div class="col-lg-4 col-md-4 col-sm-4 ">
+                     <h3>{{ team2 }}</h3>
+                         {% for l in list2 %}
+                             <li class="list-group-item"> {{ l }}</li>
+                         {% endfor %}
+                 </div>
+                 {% if team3 %}
+                 <div class="col-lg-4 col-md-4 col-sm-4 ">
+                     <h3>{{ team3|intcomma }}</h3>
+                         {% for l in list3 %}
+                             <li class="list-group-item"> {{ l }}</li>
+                         {% endfor %}
+                 </div>
+                 {% endif%}
+
+             </div>
+
+         <div class="row col-lg-12 col-md-12 col-sm-12" id="payrolls">
+
+                <div class="col-lg-4 col-md-4 col-sm-4 ">
+                    <h3><a class="btn btn-sm btn-danger payroll">Payroll</a> </h3>
+                             <li class="list-group-item">Before: <a class="badge"> <span class="glyphicon -dollar"></span> <h3>${{ team1payRoll_beforeTrade|intcomma }}</h3></a> </li>
+                             <li class="list-group-item">After: <a class="badge"> <span class="glyphicon -dollar"></span> <h3>${{ team1payRoll_afterTrade|intcomma }}</h3></a></li>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 ">
+                 <h3><a class="btn btn-sm btn-danger payroll">Payroll</a> </h3>
+                             <li class="list-group-item">Before: <a class="badge"> <span class="glyphicon -dollar"></span> <h3>${{ team2payRoll_beforeTrade|intcomma }}</h3></a> </li>
+                             <li class="list-group-item">After: <a class="badge"> <span class="glyphicon -dollar"></span> <h3>${{ team2payRoll_afterTrade|intcomma }}</h3></a></li>
+                </div>
+                {% if team3 %}
+           <div class="col-lg-4 col-md-4 col-sm-4 ">
+            <h3><a class="btn btn-sm btn-danger payroll">Payroll</a> </h3>
+                        <li class="list-group-item">Before: <a class="badge"> <span class="glyphicon -dollar"></span> <h3>${{ team3payRoll_beforeTrade|intcomma }}</h3></a> </li>
+                        <li class="list-group-item">After: <a class="badge"> <span class="glyphicon -dollar"></span> <h3><span id="failure">${{ team3payRoll_afterTrade|intcomma }}</span></h3></a></li>
+           </div>
+           {% endif%}
+         </div>
+
+	
+	</div>
+
+
+
+	<!-- This is just how we connect the JavaScript to the HTML in Django-->
+	{% load staticfiles %}
+
+	<!-- JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+
+
+
+	<script src="{% static 'js/usertrade.js' %}"></script>
+
+<!-- these hidden  elements are for the list to players currently .-->
+<input type="hidden" name="currentteam1players" id="currentteam1players">
+<input type="hidden" name="currentteam2players" id="currentteam2players">
+<input type="hidden" name="currentteam3players" id="currentteam3players">
+
+
+
+</body>
+</html>

@@ -15,11 +15,28 @@
 	
 </head>
 <body>
+	<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">NBATM</a> <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+				</li>
+			</ul>
+		</div>
+	</nav> -->
 	
-	<ul class="coll">
-	  <li><a href="#">NBATM</a></li>
-	  <li><a href="#">Home </a></li>
-	</ul>
+	
+<ul class="coll">
+  <li><a href="#">NBATM</a></li>
+  <li><a href="#">Home </a></li>
+    {% if user.is_authenticated %}
+	<li><a 	href="{% url 'user_trades' %}">Saved Trades</a></li>
+	{% endif %}
+	
+</ul>
+	
+	
 	
 	<div class="jumbotron">
 		<h1 class="display-4">NBA Trade Machine</h1>
@@ -32,7 +49,6 @@
 		<p class="lead"><a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Get Started</a></p>
 		{% endif %}
 	</div>
-	
 	<div class="container">
 		<footer class="pt-4 my-md-5 pt-md-5 border-top">
 		    <div class="row">
@@ -43,7 +59,7 @@
 		      <div class="col">
 		        <h5>About</h5>
 		        <ul class="list-unstyled text-small">
-		          <li><a class="text-muted" href="#">Team</a></li>
+		          <li><a class="text-muted" href="{% url 'about_us' %}">Team</a></li>
 		          <li><a class="text-muted" href="#">Locations</a></li>
 		          <li><a class="text-muted" href="#">Privacy</a></li>
 		          <li><a class="text-muted" href="#">Terms</a></li>
@@ -53,6 +69,7 @@
 	    </footer>
 	</div>
 	
+
 	<!-- JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js">
