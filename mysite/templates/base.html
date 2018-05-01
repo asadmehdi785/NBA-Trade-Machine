@@ -3,30 +3,27 @@
   <head>
     <meta charset="utf-8">
     <title>{% block title %}Simple is Better Than Complex{% endblock %}</title>
-	<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 
-	<!-- Bootstrap CSS -->
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/materia/bootstrap.min.css">
 
-	<!-- This just how we connect to the local CSS file in Django -->
-	{% load staticfiles %}
-	<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+  <!-- This just how we connect to the local CSS file in Django -->
+  {% load staticfiles %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
   </head>
   <body>
   
   <nav>
-
-
-
-<ul>
-<div class="floatleft">
-  <li><a href="#">NBATM</a></li>
-  <li><a href="{% url 'home' %}">Home </a></li>
- </div>
+    <ul>
+      <div class="floatleft">
+        <li><a href="#">NBATM</a></li>
+        <li><a href="{% url 'home' %}">Home </a></li>
+      </div>
   
-  <div class="floatright">
-		{% if user.is_authenticated %}
+      <div class="floatright">
+        {% if user.is_authenticated %}
         <li class="menu">
           <a  href="{% url 'logout' %}">Logout</a>
         </li>
@@ -38,16 +35,16 @@
           <a  href="{% url 'signup' %}">Signup</a>
         </li>
         {% endif %}
-		</div>
-	
-</ul>
+      </div>
+    </ul>
   </nav>
  
-	<div class="container">
+  <div class="container">
     <main>
       {% block content %}
       {% endblock %}
     </main>
-	</div>
+  </div>
+  
   </body>
 </html>

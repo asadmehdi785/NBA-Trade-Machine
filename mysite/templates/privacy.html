@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Privacy</title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+	<title>NBA Trade Machine</title>
+
+	<!-- Bootstrap CSS -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/materia/bootstrap.min.css">
+
+
+	<!-- This just how we connect to the local CSS file in Django -->
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/trade.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/about_us.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/privacy.css' %}">
+</head>
+<body>
+	<nav>
+		<ul>
+			<div class="floatleft">
+				<li><a href="#">NBATM</a></li>
+				<li><a href="{% url 'home' %}">Home </a></li>
+		  	</div>
+		  
+			<div class="floatright">
+				{% if user.is_authenticated %}
+			    <li class="menu">
+			      <a  href="{% url 'logout' %}">Logout</a>
+			    </li>
+			    {% else %}
+			    <li class="menu">
+			      <a  href="{% url 'login' %}">Login</a>
+			    </li> 
+			    <li>
+			      <a  href="{% url 'signup' %}">Signup</a>
+			    </li>
+			    {% endif %}
+		  	</div>
+		</ul>
+    </nav>
+
+    <div id="main" class="container">
+    	<h1>Privacy</h1>
+    	<p>We at Revenge of the Dreamers are committed to the absolute privacy of our users. As we never require you to input an email address associated with your account, you can be sure that you will not receive any annoying emails or spam from us. In addition, we make sure all passwords are hashed, making it much more difficult for your account to be compromised. We do not share any information associated with your account to any third-parties, and we strongly recommend against sharing your passwords with anyone in order to secure your account.</p>
+    </div>
+
+    <div class="container">
+		<footer class="pt-4 my-md-5 pt-md-5 border-top">
+		    <div class="row">
+		      <div class="col">
+		        <img class="mb-2" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
+		        <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
+		      </div>
+		      <div class="col">
+		        <h5>About</h5>
+		        <ul class="list-unstyled text-small">
+		          <li><a class="text-muted" href="{% url 'about_us' %}">Team</a></li>
+		          <li><a class="text-muted" href="{% url 'rules' %}">Rules</a></li>
+		          <li><a class="text-muted" href="{% url 'privacy' %}">Privacy</a></li>
+		          <li><a class="text-muted" href="{% url 'terms' %}">Terms</a></li>
+		        </ul>
+		      </div>
+		    </div>
+	    </footer>
+	</div>
+    <!-- JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js">
+	</script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js">
+	</script> 
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js">
+	</script>
+</body>
+</html>

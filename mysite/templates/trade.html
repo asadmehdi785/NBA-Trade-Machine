@@ -3,6 +3,7 @@
 <html>
 <head>
 	<!-- Required meta tags -->
+    <meta name="csrf-token" content="{{csrf_token}}">
 	<meta charset="utf-8">
 	<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 	<title>NBA Trade Machine</title>
@@ -27,13 +28,21 @@
 <div class="floatleft">
   <li><a href="#">NBATM</a></li>
   <li><a href="{% url 'home' %}">Home </a></li>
-    {% if user.is_authenticated %}
-	<li><a 	href="{% url 'user_trades' %}">Saved Trades</a></li>
-	{% endif %}
  </div>
   
   <div class="floatright">
 		{% if user.is_authenticated %}
+
+
+                <li class="menu">
+			      <a href="{% url 'trade_history' %}">Trade History</a>
+			    </li>
+
+                <li class="menu">
+			      <a>{{ user.username }}</a>
+			    </li>
+
+
         <li class="menu">
           <a  href="{% url 'logout' %}">Logout</a>
         </li>

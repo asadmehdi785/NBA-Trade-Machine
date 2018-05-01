@@ -22,13 +22,20 @@
 <div class="floatleft">
   <li><a href="#">NBATM</a></li>
   <li><a href="{% url 'home' %}">Home </a></li>
-    {% if user.is_authenticated %}
-	<li><a 	href="{% url 'user_trades' %}">Saved Trades</a></li>
-	{% endif %}
  </div>
   
   <div class="floatright">
 		{% if user.is_authenticated %}
+
+                <li class="menu">
+			      <a href="{% url 'trade_history' %}">Trade History</a>
+			    </li>
+
+                <li class="menu">
+			      <a>{{ user.username }}</a>
+			    </li>
+
+
         <li class="menu">
           <a  href="{% url 'logout' %}">Logout</a>
         </li>
@@ -51,7 +58,7 @@
         <h5>Trade ID: {{ trade_history|intcomma }}</h5>
         {% endif %}
 
-            <p class="lead">The trade between the <strong>{{ team1 }}</strong> and the <strong>{{ team2 }}</strong> {% if team3 %} and <strong>{{ team3 }}<strong> {% endif %}was successful.</p>
+            <p class="lead">The trade between the <strong>{{ team1 }}</strong> and the <strong>{{ team2 }}</strong> {% if team3 %} and <strong>{{ team3 }}</strong> {% endif %}was successful.</p>
 
 
             <div class="row col-lg-12 col-md-12 col-sm-12">
@@ -101,11 +108,9 @@
            {% endif%}
          </div>
      
-        {% comment %}<p class="lead">The payroll of {{ team1 }} before the trade was <strong>${{ team1payRoll_beforeTrade|intcomma }}</strong>. The payroll of {{ team2 }} before the trade was <strong>${{ team2payRoll_beforeTrade|intcomma }}</strong>.</p>
-		<p class="lead">The payroll of {{ team1 }} after the trade is <strong>${{ team1payRoll_afterTrade|intcomma }}</strong>. The payroll of {{ team2 }} after the trade is <strong>${{ team2payRoll_afterTrade|intcomma }}</strong>.</p>{% endcomment %}
+
 		<br>
 		<a class="btn btn-sm" href="/trade/"> Try another trade!</a>
-		<a class="btn btn-sm" href="/user_trades/"> Save Trade</a>
         <div id="share-buttons">
             <!-- Email -->
             <a href="mailto:?Subject=My Trade&amp;Body=Check%20out%20my%20trade!%20 https://rotd-nba-tm.com/{{ trade_history|intcomma }}">

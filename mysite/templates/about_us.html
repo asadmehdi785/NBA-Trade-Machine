@@ -24,27 +24,33 @@
 			<div class="floatleft">
 				<li><a href="#">NBATM</a></li>
 				<li><a href="{% url 'home' %}">Home </a></li>
-                {% if user.is_authenticated %}
-	<li><a 	href="{% url 'user_trades' %}">Saved Trades</a></li>
-	{% endif %}
-		  	</div>
-		  
+		  </div>
 			<div class="floatright">
 				{% if user.is_authenticated %}
+          <li class="menu">
+			      <a href="{% url 'trade_history' %}">Trade History</a>
+			    </li>
+
+          <li class="menu">
+			      <a>{{ user.username }}</a>
+			    </li>
+
 			    <li class="menu">
 			      <a  href="{% url 'logout' %}">Logout</a>
 			    </li>
+
 			    {% else %}
 			    <li class="menu">
 			      <a  href="{% url 'login' %}">Login</a>
-			    </li> 
+			    </li>
+
 			    <li>
 			      <a  href="{% url 'signup' %}">Signup</a>
 			    </li>
 			    {% endif %}
 		  	</div>
 		</ul>
-    </nav>
+  </nav>
 
     <div class="container">
 
@@ -100,8 +106,27 @@
           <p>Albert served as a front-end developer for the team. He is an ITWS major in his senior year, and will be continuing his graduate studies in ITWS starting next fall. In his free time, he likes to play video games.</p>
         </div>
       </div>
-
     </div>
+
+  <div class="container">
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div class="row">
+          <div class="col">
+            <img class="mb-2" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
+            <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
+          </div>
+          <div class="col">
+            <h5>About</h5>
+            <ul class="list-unstyled text-small">
+              <li><a class="text-muted" href="{% url 'about_us' %}">Team</a></li>
+              <li><a class="text-muted" href="{% url 'rules' %}">Rules</a></li>
+              <li><a class="text-muted" href="{% url 'privacy' %}">Privacy</a></li>
+              <li><a class="text-muted" href="{% url 'terms' %}">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+  </div>
 
 	<!-- JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->

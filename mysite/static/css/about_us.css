@@ -14,3 +14,7 @@ p {
   transform: translateX(-50%);
   margin-left: 50%;
 }
+
+footer ul {
+	background-color: transparent;
+}

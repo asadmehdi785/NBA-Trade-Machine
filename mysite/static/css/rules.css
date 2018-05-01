@@ -4,16 +4,6 @@
 .floatright {
   float: right;
 }
-li {
-  display: inline;
-}
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
 div.floatleft>li {
   display: inline;
 }
@@ -26,6 +16,15 @@ nav>ul {
   padding: 0;
   overflow: hidden;
   background-color: #333;
+}
+ul.list-unstyled.text-small {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+ul.list-unstyled.text-small>li {
+  display: inline;
 }
 .floatleft, li a {
   display: block;
